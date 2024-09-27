@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.student.student_backend.entities.Student;
 import com.student.student_backend.services.StudentService;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,4 +36,8 @@ public class StudentController {
 		return service.saveStudent(student);
 	}
 
+	@DeleteMapping("student/{id}")
+	public void deleteStudent (@PathVariable int id) {
+		service.deleteStudent(id);
+	}
 }

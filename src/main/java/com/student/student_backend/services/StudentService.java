@@ -28,4 +28,12 @@ public class StudentService {
 		return repository.save(student);
 	}
 
+	public void deleteStudent (int id) {
+		if (repository.existsById(id)) {
+			repository.deleteById(id);
+			return;
+		}
+		throw new EntityNotFoundException("Student not found");
+	}
+
 }
