@@ -24,4 +24,8 @@ public class StudentService {
 		return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Student not found"));
 	}
 
+	public Student saveStudent (Student student) {
+		return repository.save(student);
+	}
+
 }
