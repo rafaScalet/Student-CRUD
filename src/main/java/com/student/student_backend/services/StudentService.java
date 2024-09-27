@@ -33,7 +33,18 @@ public class StudentService {
 			repository.deleteById(id);
 			return;
 		}
+
 		throw new EntityNotFoundException("Student not found");
+	}
+
+	public void updateStudent (int id, Student student) {
+		Student temp = repository.getReferenceById(id);
+
+		temp.setName(student.getName());
+		temp.setPeriod(student.getPeriod());
+		temp.setActive(student.getActive());
+
+		repository.save(temp);
 	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -39,5 +40,10 @@ public class StudentController {
 	@DeleteMapping("student/{id}")
 	public void deleteStudent (@PathVariable int id) {
 		service.deleteStudent(id);
+	}
+
+	@PutMapping("student/{id}")
+	public void updateStudent (@PathVariable int id, @RequestBody Student student) {
+		service.updateStudent(id, student);
 	}
 }
