@@ -1,9 +1,12 @@
 package com.student.student_backend.resources;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.student.student_backend.entities.Student;
 import com.student.student_backend.services.StudentService;
@@ -23,27 +26,33 @@ public class StudentController {
 	private StudentService service;
 
 	@GetMapping("students")
-	public List<Student> getStudents () {
-		return service.getStudents();
+	public ResponseEntity<List<Student>> getStudents () {
+		return ResponseEntity.ok(service.getStudents());
 	}
 
 	@GetMapping("student/{id}")
-	public Student getStudentById (@PathVariable int id) {
-		return service.getStudentById(id);
+	public ResponseEntity<Student> getStudentById (@PathVariable int id) {
+		return ResponseEntity.ok(service.getStudentById(id));
 	}
 
 	@PostMapping("student")
-	public Student saveStudent (@RequestBody Student student) {
-		return service.saveStudent(student);
+	public ResponseEntity<Student> saveStudent (@RequestBody Student student) {
+		Student createdStudent = service.saveStudent(student);
+
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdStudent.getId()).toUri();
+
+		return ResponseEntity.created(location).body(createdStudent);
 	}
 
 	@DeleteMapping("student/{id}")
-	public void deleteStudent (@PathVariable int id) {
+	public ResponseEntity<Void> deleteStudent (@PathVariable int id) {
 		service.deleteStudent(id);
+		return ResponseEntity.noContent().build();
 	}
 
 	@PutMapping("student/{id}")
-	public void updateStudent (@PathVariable int id, @RequestBody Student student) {
+	public ResponseEntity<Void> updateStudent (@PathVariable int id, @RequestBody Student student) {
 		service.updateStudent(id, student);
+		return ResponseEntity.ok().build();
 	}
 }
