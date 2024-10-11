@@ -1,0 +1,86 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Student-CRUD",
+    "collectionId": "31db1288-f2d2-4eec-b3b8-ba9d5231669c",
+    "dateExported": "2024-10-11T17:14:59.240Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "7fd03239-07bf-464c-93f0-93f9aac5dd35",
+            "colId": "31db1288-f2d2-4eec-b3b8-ba9d5231669c",
+            "containerId": "",
+            "name": "students",
+            "url": "/students",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-10-11T17:02:51.675Z",
+            "modified": "2024-10-11T17:03:42.457Z",
+            "headers": []
+        },
+        {
+            "_id": "a2aad23f-38ba-483a-93e0-74a6a79b9e56",
+            "colId": "31db1288-f2d2-4eec-b3b8-ba9d5231669c",
+            "containerId": "",
+            "name": "student",
+            "url": "/student/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-10-11T17:04:48.610Z",
+            "modified": "2024-10-11T17:05:38.336Z",
+            "headers": []
+        },
+        {
+            "_id": "01836a51-a7aa-469c-884c-de1ed6e37fc8",
+            "colId": "31db1288-f2d2-4eec-b3b8-ba9d5231669c",
+            "containerId": "",
+            "name": "student",
+            "url": "/student",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-10-11T17:06:16.635Z",
+            "modified": "2024-10-11T17:07:17.801Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"nome 4\",\n  \"period\": \"manha\",\n  \"active\": true\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "c701255d-4807-4602-8ac8-53314cdc846b",
+            "colId": "31db1288-f2d2-4eec-b3b8-ba9d5231669c",
+            "containerId": "",
+            "name": "student",
+            "url": "/student/4",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-10-11T17:10:25.985Z",
+            "modified": "2024-10-11T17:10:54.456Z",
+            "headers": []
+        },
+        {
+            "_id": "47af51f4-4bf0-4147-8252-8e9ed74dd3e6",
+            "colId": "31db1288-f2d2-4eec-b3b8-ba9d5231669c",
+            "containerId": "",
+            "name": "student",
+            "url": "/student/1",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-10-11T17:12:01.144Z",
+            "modified": "2024-10-11T17:12:29.526Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"nome edit\",\n  \"period\": \"manha\",\n  \"active\": true\n}",
+                "form": []
+            }
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:8080"
+        }
+    },
+    "ref": "nYpGVfzlv_P3E0r8A68bf8il5VL6dMupx0uMwF5aVAZ2VOIqiIoFnewqy7G7gB1MS1fLJptha__YOVN8TmVhDQ"
+}
