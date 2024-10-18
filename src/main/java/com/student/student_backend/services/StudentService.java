@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.student.student_backend.dtos.StudentRequest;
+import com.student.student_backend.dtos.StudentResponse;
 import com.student.student_backend.entities.Student;
+import com.student.student_backend.mappers.StudentMapper;
 import com.student.student_backend.repositories.StudentRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -16,16 +19,16 @@ public class StudentService {
 	@Autowired
 	private StudentRepository repository;
 
-	public List<Student> getStudents () {
-		return repository.findAll();
+	public List<StudentResponse> getStudents () {
+		return repository.findAll().stream().map(item -> StudentMapper.toDTO(item)).toList();
 	}
 
-	public Student getStudentById (int id) {
-		return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Student not found"));
+	public StudentResponse getStudentById (int id) {
+		return StudentMapper.toDTO(repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Student not found")));
 	}
 
-	public Student saveStudent (Student student) {
-		return repository.save(student);
+	public StudentResponse saveStudent (StudentRequest dtoStudentRequest) {
+		return StudentMapper.toDTO(repository.save(StudentMapper.toEntity(dtoStudentRequest)));
 	}
 
 	public void deleteStudent (int id) {
@@ -37,12 +40,12 @@ public class StudentService {
 		throw new EntityNotFoundException("Student not found");
 	}
 
-	public void updateStudent (int id, Student student) {
+	public void updateStudent (int id, StudentRequest dtoStudentRequest) {
 		Student temp = repository.getReferenceById(id);
 
-		temp.setName(student.getName());
-		temp.setPeriod(student.getPeriod());
-		temp.setActive(student.getActive());
+		temp.setName(dtoStudentRequest.name());
+		temp.setPeriod(dtoStudentRequest.period());
+		temp.setActive(dtoStudentRequest.active());
 
 		repository.save(temp);
 	}

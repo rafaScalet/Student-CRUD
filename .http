@@ -1,0 +1,33 @@
+@url = http://localhost:8080
+
+GET {{ url }}/students
+
+###
+
+GET {{ url }}/student/1
+
+###
+
+POST {{ url }}/student
+Content-Type: application/json
+
+{
+  "name": "nome 4",
+  "period": "manha",
+  "active": true
+}
+
+###
+
+PUT {{ url }}/student/2
+Content-Type: application/json
+
+{
+  "name": "nome edit",
+  "period": "manha",
+  "active": true
+}
+
+###
+
+DELETE {{ url }}/student/1

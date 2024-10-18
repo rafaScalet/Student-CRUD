@@ -8,7 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.student.student_backend.entities.Student;
+import com.student.student_backend.dtos.StudentRequest;
+import com.student.student_backend.dtos.StudentResponse;
 import com.student.student_backend.services.StudentService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,20 +27,20 @@ public class StudentController {
 	private StudentService service;
 
 	@GetMapping("students")
-	public ResponseEntity<List<Student>> getStudents () {
+	public ResponseEntity<List<StudentResponse>> getStudents () {
 		return ResponseEntity.ok(service.getStudents());
 	}
 
 	@GetMapping("student/{id}")
-	public ResponseEntity<Student> getStudentById (@PathVariable int id) {
+	public ResponseEntity<StudentResponse> getStudentById (@PathVariable int id) {
 		return ResponseEntity.ok(service.getStudentById(id));
 	}
 
 	@PostMapping("student")
-	public ResponseEntity<Student> saveStudent (@RequestBody Student student) {
-		Student createdStudent = service.saveStudent(student);
+	public ResponseEntity<StudentResponse> saveStudent (@RequestBody StudentRequest student) {
+		StudentResponse createdStudent = service.saveStudent(student);
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdStudent.getId()).toUri();
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdStudent.id()).toUri();
 
 		return ResponseEntity.created(location).body(createdStudent);
 	}
@@ -51,7 +52,7 @@ public class StudentController {
 	}
 
 	@PutMapping("student/{id}")
-	public ResponseEntity<Void> updateStudent (@PathVariable int id, @RequestBody Student student) {
+	public ResponseEntity<Void> updateStudent (@PathVariable int id, @RequestBody StudentRequest student) {
 		service.updateStudent(id, student);
 		return ResponseEntity.ok().build();
 	}
