@@ -12,6 +12,8 @@ import com.student.student_backend.dtos.StudentRequest;
 import com.student.student_backend.dtos.StudentResponse;
 import com.student.student_backend.services.StudentService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +39,7 @@ public class StudentController {
 	}
 
 	@PostMapping("student")
-	public ResponseEntity<StudentResponse> saveStudent (@RequestBody StudentRequest student) {
+	public ResponseEntity<StudentResponse> saveStudent (@Valid @RequestBody StudentRequest student) {
 		StudentResponse createdStudent = service.saveStudent(student);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdStudent.id()).toUri();

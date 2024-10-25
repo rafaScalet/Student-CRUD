@@ -19,6 +19,17 @@ Content-Type: application/json
 
 ###
 
+POST {{ url }}/student
+Content-Type: application/json
+
+{
+  "name": "",
+  "period": "",
+  "active": null
+}
+
+###
+
 PUT {{ url }}/student/2
 Content-Type: application/json
 
