@@ -1,3 +1,4 @@
 java oracle-17.0.11
 spring-boot 3.3.5
 maven 3.9.9
+httpie-go 0.7.0
