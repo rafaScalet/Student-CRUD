@@ -9,9 +9,9 @@ public class StandardError implements Serializable {
 
 	private Instant timeStamp;
 	private Integer status;
-	private String  error;
-	private String  message;
-	private String  path;
+	private String error;
+	private String message;
+	private String path;
 
 	public Instant getTimeStamp() {
 		return timeStamp;

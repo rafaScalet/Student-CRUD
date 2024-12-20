@@ -3,7 +3,7 @@ package com.student.student_backend.resources.exceptions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidationErrors  extends StandardError {
+public class ValidationErrors extends StandardError {
 
 	private List<String> errors = new ArrayList<>();
 
